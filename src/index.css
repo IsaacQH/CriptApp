@@ -1,13 +1,18 @@
-:root{
-  --white: #FFF;
-  --primary: #ffcb22;
-  --black: #181818
+
+/*****************************   GENERAL   ******************************************/
+/* Define variables de color */
+:root {
+  --white: #FFF; /* Color blanco */
+  --primary: #ffcb22; /* Color primario amarillo */
+  --black: #181818; /* Color negro */
 }
 
-html{
-  font-size: 62.5%
+/* Ajusta el tamaño de fuente para facilitar los cálculos en rem */
+html {
+  font-size: 62.5%;
 }
 
+/* Crea una capa semitransparente negra superpuesta sobre la imagen de fondo */
 body::after {
   content: "";
   position: fixed;
@@ -16,42 +21,87 @@ body::after {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Cambia el último valor para ajustar la opacidad (0 es completamente transparente y 1 es completamente opaco) */
-  z-index: -1;
+  z-index: -1; /* Asegura que el pseudo-elemento esté detrás del contenido del body */
 }
 
+/* Estilos generales del cuerpo del documento */
 body {
   position: relative;
   background-image: url('/public/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  background-size: cover; /* Hace que la imagen cubra todo el espacio disponible */
+  background-position: center; /* Centra la imagen en el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  min-height: 100vh; /* Garantiza que el cuerpo ocupe al menos el 100% de la altura de la ventana */
   font-family: "Outfit", sans-serif;
+  font-size: 2rem;
 }
 
-.container{
-  max-width: 60rem;
-  width: 95%;
-  margin: 0 auto;
+/* Estilos para contenedor general */
+.container {
+  max-width: 60rem; /* Ancho máximo del contenedor */
+  width: 95%; /* Ancho del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
 }
 
-.app-title{
-  font-size: 3.8rem;
-  margin-top: 6rem;
-  color: var(--white);
-  line-height: 0.8;
+/* Estilos para el título de la aplicación */
+.app-title {
+  font-size: 3.8rem; /* Tamaño de fuente */
+  margin-top: 6rem; /* Margen superior */
+  color: var(--white); /* Color de texto */
+  line-height: 1; /* Altura de línea */
 }
 
-.app-title span{
-  color: var(--primary);
-  display: block;
-  font-size: 4.4rem;
+/* Estilos para el subtítulo de la aplicación */
+.app-title span {
+  color: var(--primary); /* Color de texto */
+  display: block; /* Cambia el elemento a bloque */
+  font-size: 4.4rem; /* Tamaño de fuente */
 }
 
-.content{
-  margin-top: 5rem;
-  padding: 6rem 2rem;
-  background-color: var(--white);
-  border-radius: 20px;
-  box-shadow: rgba(255, 209, 2, 0.4) 5px 5px, rgba(255, 209, 2, 0.3) 10px 10px, rgba(255, 209, 2, 0.2) 15px 15px, rgba(255, 209, 2, 0.1) 20px 20px, rgba(255, 209, 2, 0.05) 25px 25px;
+/* Estilos para el contenido */
+.content {
+  margin-top: 5rem; /* Margen superior */
+  padding: 6rem 4rem; /* Relleno */
+  background-color: var(--white); /* Color de fondo */
+  border-radius: 20px; /* Radio de borde */
+  box-shadow: rgba(255, 209, 2, 0.4) 5px 5px, rgba(255, 209, 2, 0.3) 10px 10px, rgba(255, 209, 2, 0.2) 15px 15px; /* Sombra de caja */
+}
+
+
+/*****************************   FORM   ******************************************/
+.form,
+.field{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form label{
+  color: var(--black)
+}
+
+.form select{
+  background-color: #ececec;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1.7rem;
+}
+
+.form [type="submit"]{
+  border: none;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  background-color: rgb(255, 233, 133);
+  color: #000000;
+  cursor: pointer;
+  margin: 2rem 0 2rem 0;
+  transition: transform 0.3s; /* Aplica una transición suave a la transformación */
+}
+
+form [type="submit"]:hover{
+  background-color: rgb(255, 224, 88);
+  transform: scale(1.05); /* Aumenta la escala del botón al pasar el cursor sobre él */
 }
