@@ -105,3 +105,12 @@ form [type="submit"]:hover{
   background-color: rgb(255, 224, 88);
   transform: scale(1.05); /* Aumenta la escala del botón al pasar el cursor sobre él */
 }
+
+/*****************************   ERROR   ******************************************/
+.error{
+  color: #ececec;
+  background-color: rgb(185, 45, 45);
+  padding: 1rem 3rem 1rem 3rem;
+  text-align: center;
+  border-radius: 2rem;
+}
