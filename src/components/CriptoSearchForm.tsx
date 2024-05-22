@@ -1,15 +1,11 @@
 
-import { useEffect } from "react"
+
 import { currencies } from "../data"
 import { useCryptoStore } from "../store"
 
 export const CriptoSearchForm = () => {
 
-    const fetchCryptos = useCryptoStore((state) => state.fetchCryptos)  //Llamamos a fectch criptos desde el zustand
-
-    useEffect(() =>{
-        fetchCryptos()
-    }, [])
+    const cryptoCurrencies = useCryptoStore((state) => state.cryptoCurrencies)  //Llamamos a fectch criptos desde el zustand
 
     return (
         <form className="form">
@@ -35,6 +31,12 @@ export const CriptoSearchForm = () => {
                     id="criptocurrency"
                 >
                     <option value="">-- Selecciona --</option>
+                    {cryptoCurrencies.map((cryptoCurrency) => (
+                        <option 
+                            value={cryptoCurrency.CoinInfo.FullName} 
+                            key = {cryptoCurrency.CoinInfo.Name}
+                        >{cryptoCurrency.CoinInfo.FullName}</option>
+                    ))}
                 </select>
             </div>
 
