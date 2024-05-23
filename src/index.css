@@ -114,3 +114,68 @@ form [type="submit"]:hover{
   text-align: center;
   border-radius: 2rem;
 }
+
+/*****************************   DISPLAY DE PRICE   ******************************************/
+.result-wrapper {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-wrapper h2 {
+  text-align: center;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px; /* Define un ancho máximo para el contenedor */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho posible */
+  padding-left: 4rem;
+}
+
+.result div {
+  padding-left: 5rem;
+}
+
+.result img {
+  width: 130%;
+  max-width: 200px; /* Define un ancho máximo para la imagen */
+  height: auto; /* Asegura que la imagen mantenga su proporción */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.result p {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+}
+
+.result span {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .result {
+    grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas más pequeñas */
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+    padding-left: 0rem;
+  }
+
+  .result img {
+    margin: 0 auto 1rem; /* Centra la imagen y añade un margen inferior */
+  }
+  .result div {
+    padding-left: 0rem;
+  }
+}
