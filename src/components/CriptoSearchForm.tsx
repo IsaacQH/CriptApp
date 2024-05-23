@@ -7,7 +7,8 @@ import { ErrorMessage } from "./ErrorMessage"
 
 export const CriptoSearchForm = () => {
 
-    const cryptoCurrencies = useCryptoStore((state) => state.cryptoCurrencies)  //Llamamos a fectch criptos desde el zustand
+    const cryptoCurrencies = useCryptoStore((state) => state.cryptoCurrencies)  //Llamamos los criptos registrados desde el zustand
+    const fetchData = useCryptoStore((state) => state.fetchData)               //Llamamos a fectch para pasarle los pair
     const [pair, setPair] = useState<Pair>({    //Crea el estado que guardará los calores del form
         currency: '',
         criptocurrency: ''
@@ -28,7 +29,7 @@ export const CriptoSearchForm = () => {
             return              //Interrumpe la función
         }
         setError('')
-        //consultar la API
+        fetchData(pair)  //Manda pair a fetch data
     }
 
 
