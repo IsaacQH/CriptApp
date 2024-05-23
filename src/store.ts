@@ -1,6 +1,6 @@
 
 import {create} from 'zustand'
-import { Cryptocurrency, Pair } from './types'
+import { CryptoPrice, Cryptocurrency, Pair } from './types'
 import { devtools } from 'zustand/middleware'
 import { fetchCurrentCryptoPrice, getCryptos } from './services/CryptoServices'
 
@@ -8,6 +8,7 @@ import { fetchCurrentCryptoPrice, getCryptos } from './services/CryptoServices'
 //Tipo de "dato" para realizar el schema para eluseCryptoStore
 export type CryptoStore = {
     cryptoCurrencies: Cryptocurrency[],
+    result: CryptoPrice,
     fetchCryptos: () => Promise<void>,
     fetchData: (pair:Pair) => Promise<void>
 }
@@ -20,6 +21,8 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({     //I
 
     cryptoCurrencies:[], //State para guardat los cryptoCurrencies
 
+    result: {} as CryptoPrice,    //Se inicia en ceros y con el as se evita declarar cada propiedad vacia
+
     fetchCryptos: async () => { //Funcion para hacer fecth en las cryptos
         const cryptoCurrencies = await getCryptos()  //Llamamos a la funcion que obtiene los valores
         set(() => ({
@@ -27,8 +30,11 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({     //I
         }))
     },
 
-    fetchData: async (pair) => {
-        await fetchCurrentCryptoPrice(pair)
+    fetchData: async (pair) => {   //Función que recibe los precios y los pasa a el nuevo fetch
+        const result = await fetchCurrentCryptoPrice(pair)  //resultado de la abstraccion de los datos
+        set(() => ({
+            result : result   //Seteamos el valor de result a lo que obtuvimos
+        }))
     }
     
 })))
